@@ -1,10 +1,10 @@
-@CleanEnviroment
+@CleanEnvironment
 Feature: delete Workspace
 
   As a user
   I want to create a new workspace with valid data
 
-  @DeleteWorkspace
+  @deleteAllWorkspace
   Scenario: Create Workspaces
     Given I send a POST request to /my/workspaces
       | name | workspaceTest |

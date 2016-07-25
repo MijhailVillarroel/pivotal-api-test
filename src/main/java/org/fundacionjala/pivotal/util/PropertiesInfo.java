@@ -13,7 +13,22 @@ import org.apache.log4j.Logger;
  * @author RosarioGarcia
  */
 public class PropertiesInfo {
+
     private static final Logger LOGGER = Logger.getLogger(PropertiesInfo.class.getSimpleName());
+
+    private static final String CONFIG_PROPERTIES = "gradle.properties";
+
+    private static final String PROXY_PORT = "proxyPort";
+
+    private static final String PROXY_HOST = "proxyHost";
+
+    private static final String EMAIL = "email";
+
+    private static final String PASSWORD = "password";
+
+    private static final String URL_API = "urlApi";
+
+    private static final String API_TOKEN = "apiToken";
 
     private static PropertiesInfo instance;
 
@@ -36,7 +51,7 @@ public class PropertiesInfo {
      */
     private void loadProperties() {
         try {
-            FileInputStream fileInputStream = new FileInputStream(Constants.CONFIG_PROPERTIES);
+            FileInputStream fileInputStream = new FileInputStream(CONFIG_PROPERTIES);
             properties = new Properties();
             properties.load(fileInputStream);
             fileInputStream.close();
@@ -52,62 +67,31 @@ public class PropertiesInfo {
     }
 
     public String getEmail() {
-        return getProperty(Constants.EMAIL);
+        return getProperty(EMAIL);
     }
 
     public String getPassword() {
-        return getProperty(Constants.PASSWORD);
-    }
-
-    public String getUrl() {
-        return getProperty(Constants.URL);
+        return getProperty(PASSWORD);
     }
 
     public String getUrlApi() {
-        return getProperty(Constants.URL_API);
+        return getProperty(URL_API);
     }
 
     public String getApiToken() {
-        return getProperty(Constants.API_TOKEN);
-    }
-
-    public String getSauceUser() {
-        return getProperty(Constants.REMOTE_USER);
-    }
-
-    public String getSauceAccessKey() {
-        return getProperty(Constants.REMOTE_ACCESS_KEY);
-    }
-
-    public String getBrowser() {
-        return getProperty(Constants.LOCAL_BROWSER);
-    }
-
-    public String getRemoteBrowser() {
-        return getProperty(Constants.REMOTE_BROWSER);
-    }
-
-    public String getBrowserVersion() {
-        return getProperty(Constants.REMOTE_BROWSER_VERSION);
-    }
-
-    public String getPlatform() {
-        return getProperty(Constants.REMOTE_PLATFORM);
+        return getProperty(API_TOKEN);
     }
 
     public String getProxy() {
         return String.format("http://%s:%s", getProxyHost(), getProxyPort());
     }
 
-    public String getProxyHost() {
-        return getProperty(Constants.PROXY_HOST);
+    private String getProxyHost() {
+        return getProperty(PROXY_HOST);
     }
 
-    public String getProxyPort() {
-        return getProperty(Constants.PROXY_PORT);
+    private String getProxyPort() {
+        return getProperty(PROXY_PORT);
     }
 
-    public String getRemoteTestName() {
-        return getProperty(Constants.REMOTE_TEST_NAME);
-    }
 }
