@@ -43,6 +43,7 @@ public class Asserts {
     }
     @Then("^I expect the status code (\\d+)$")
     public void iExpectStatusCode(int statusCodeExpected) {
+        System.out.println("dsfdsf"+api.getResponse().prettyPrint());
         assertEquals(statusCodeExpected, api.getResponse().statusCode());
     }
     @Then("^I expect that \\[(.*)\\] be (.*)$")

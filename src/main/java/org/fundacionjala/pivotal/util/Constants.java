@@ -20,7 +20,7 @@ public final class Constants {
 
     public static final String PROJECT_ID = "id";
 
-    public static final String CONFIG_PROPERTIES = "org.properties";
+    public static final String CONFIG_PROPERTIES = "pivotal.properties";
 
     public static final String PROXY_PORT = "proxyPort";
 

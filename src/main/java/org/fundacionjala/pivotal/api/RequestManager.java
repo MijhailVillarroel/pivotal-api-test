@@ -43,6 +43,7 @@ public class RequestManager {
 
     public static Response deleteRequest(String endpoint) {
         LOGGER.info("DELETE endpoint is: " + endpoint);
+        System.out.println("asdasd"+ given().spec(REQUEST).when().delete(endpoint));
         return given().spec(REQUEST).when().delete(endpoint);
     }
 }

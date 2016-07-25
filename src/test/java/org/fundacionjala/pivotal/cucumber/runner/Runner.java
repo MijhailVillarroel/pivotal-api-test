@@ -19,7 +19,7 @@ import cucumber.api.junit.Cucumber;
                 "json:target/test-report.json",
                 "junit:target/test-report.xml"},
         features = {"src/test/resources/"},
-        glue = {"cucumber"},
+ //       glue = {"org.fundacionjala.pivotal.cucumber"},
         snippets = SnippetType.CAMELCASE
 )
 public class Runner {
