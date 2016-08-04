@@ -1,10 +1,10 @@
 package org.fundacionjala.pivotal.cucumber.hooks;
 
-import cucumber.api.java.Before;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.PropertyConfigurator;
+import org.fundacionjala.pivotal.util.Environment;
 
-import org.fundacionjala.pivotal.util.PropertiesInfo;
+import cucumber.api.java.Before;
 
 import static org.fundacionjala.pivotal.api.RequestManager.getRequest;
 import static org.fundacionjala.pivotal.util.CommonMethods.deleteAllProjects;
@@ -26,7 +26,7 @@ public class GlobalHooks {
 
     private static final String API_CREDENTIALS_INCORRECT = "The org rest credentials is not correct";
 
-    private static final PropertiesInfo PROPERTIES_INFO = PropertiesInfo.getInstance();
+    private static final Environment ENVIRONMENT = Environment.getInstance();
 
     private static boolean BEFORE_ALL_FLAG = false;
 
@@ -39,9 +39,9 @@ public class GlobalHooks {
                     deleteAllWorkspaces();
                 }
             });
-            if (StringUtils.isEmpty(PROPERTIES_INFO.getEmail()) ||
-                    StringUtils.isEmpty(PROPERTIES_INFO.getApiToken()) ||
-                    StringUtils.isEmpty(PROPERTIES_INFO.getPassword())) {
+            if (StringUtils.isEmpty(ENVIRONMENT.getEmail()) ||
+                    StringUtils.isEmpty(ENVIRONMENT.getApiToken()) ||
+                    StringUtils.isEmpty(ENVIRONMENT.getPassword())) {
                 quitProgram(PROPERTIES_FILE_UNFILLED);
             } else if (getRequest(PROJECTS_ENDPOINT).statusCode() != SUCCESS_STATUS_CODE) {
                 quitProgram(API_CREDENTIALS_INCORRECT);

@@ -12,9 +12,9 @@ import org.apache.log4j.Logger;
  *
  * @author RosarioGarcia
  */
-public class PropertiesInfo {
+public class Environment {
 
-    private static final Logger LOGGER = Logger.getLogger(PropertiesInfo.class.getSimpleName());
+    private static final Logger LOGGER = Logger.getLogger(Environment.class.getSimpleName());
 
     private static final String CONFIG_PROPERTIES = "gradle.properties";
 
@@ -30,17 +30,17 @@ public class PropertiesInfo {
 
     private static final String API_TOKEN = "apiToken";
 
-    private static PropertiesInfo instance;
+    private static Environment instance;
 
     private Properties properties;
 
-    private PropertiesInfo() {
+    private Environment() {
         loadProperties();
     }
 
-    public static PropertiesInfo getInstance() {
+    public static Environment getInstance() {
         if (instance == null) {
-            instance = new PropertiesInfo();
+            instance = new Environment();
         }
         return instance;
     }
@@ -63,7 +63,11 @@ public class PropertiesInfo {
     }
 
     public String getProperty(String propertyKey) {
-        return properties.getProperty(propertyKey);
+        String propertyValue = System.getProperty(propertyKey);
+        if (propertyValue == null) {
+            propertyValue = properties.getProperty(propertyKey);
+        }
+        return propertyValue;
     }
 
     public String getEmail() {

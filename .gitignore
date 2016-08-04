@@ -99,3 +99,6 @@ movies/target/
 movies/movies.iml
 /log/
 *.iml
+/.gradle/
+/build/
+/cucumber-html-report/

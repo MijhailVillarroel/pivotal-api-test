@@ -4,7 +4,7 @@ import com.github.markusbernhardt.proxy.ProxySearch;
 import com.jayway.restassured.builder.RequestSpecBuilder;
 import com.jayway.restassured.specification.RequestSpecification;
 
-import org.fundacionjala.pivotal.util.PropertiesInfo;
+import org.fundacionjala.pivotal.util.Environment;
 
 import static com.jayway.restassured.RestAssured.baseURI;
 
@@ -14,6 +14,8 @@ import static com.jayway.restassured.RestAssured.baseURI;
 public class Authentication {
 
     private static final String TOKEN_HEADER = "X-TrackerToken";
+
+    private static final Environment ENVIRONMENT = Environment.getInstance();
 
     private static Authentication instance;
 
@@ -31,17 +33,17 @@ public class Authentication {
     }
 
     private void initApi() {
-        baseURI = PropertiesInfo.getInstance().getUrlApi();
+        baseURI = ENVIRONMENT.getUrlApi();
         if (ProxySearch.getDefaultProxySearch().getProxySelector() == null) {
             requestSpecification = new RequestSpecBuilder()
                     .setRelaxedHTTPSValidation()
-                    .addHeader(TOKEN_HEADER, PropertiesInfo.getInstance().getApiToken())
+                    .addHeader(TOKEN_HEADER, ENVIRONMENT.getApiToken())
                     .build();
         } else {
             requestSpecification = new RequestSpecBuilder()
                     .setRelaxedHTTPSValidation()
-                    .setProxy(PropertiesInfo.getInstance().getProxy())
-                    .addHeader(TOKEN_HEADER, PropertiesInfo.getInstance().getApiToken())
+                    .setProxy(ENVIRONMENT.getProxy())
+                    .addHeader(TOKEN_HEADER, ENVIRONMENT.getApiToken())
                     .build();
         }
     }

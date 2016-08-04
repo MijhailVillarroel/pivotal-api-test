@@ -4,18 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.google.gson.Gson;
-import com.sun.xml.internal.ws.policy.AssertionSet;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
-import io.restassured.module.jsv.JsonSchemaValidator;
+
 import org.fundacionjala.pivotal.ProjectSteps;
 import org.fundacionjala.pivotal.ValidateProjects;
 
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
+
 import static org.fundacionjala.pivotal.util.CommonMethods.getStringValueFromMapOfResponses;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 public class Asserts {
 
@@ -40,11 +39,11 @@ public class Asserts {
  //       JsonSchemaValidator a =matchesJsonSchemaInClasspath("testValidate.json");
 //        assertThat(JsonString,matchesJsonSchemaInClasspath("testValidate.json"));
 
-//        Gson gson = new Gson();
-//        Map<ProjectSteps, Object> map = new HashMap<>();
-//        map = (Map<ProjectSteps, Object>) gson.fromJson(api.getResponse().print(), map.getClass());
-//        ValidateProjects.getAssertionMap(map).values().stream()
-//                .forEach((steps) -> assertTrue("The fields is false ", steps));
+        Gson gson = new Gson();
+        Map<ProjectSteps, Object> map = new HashMap<>();
+        map = (Map<ProjectSteps, Object>) gson.fromJson(api.getResponse().print(), map.getClass());
+        ValidateProjects.getAssertionMap(map).values().stream()
+                .forEach((steps) -> assertTrue("The fields is false ", steps));
     }
 
     @Then("^I expect the status code (\\d+)$")
@@ -63,7 +62,7 @@ public class Asserts {
     public void iExpectThatCommentTextNotBeCommentTest(String expectedName, String expectedResult) {
         String[] value = expectedName.split("\\.");
         String actualResult = getStringValueFromMapOfResponses(value[INDEX_1], value[INDEX_2]);
-        assertEquals(expectedResult, actualResult);
+        assertNotEquals(expectedResult, actualResult);
     }
 
     @Then("^I validate fields$")

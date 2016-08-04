@@ -1,12 +1,9 @@
 @CleanEnvironment
 Feature: Testing for login Pivotal page
 
-  @deleteAllProject
+  @smoke @deleteAllProject
   Scenario: Create project
     Given I send a POST request to /projects
       | name   | TestCreateProjects |
-      | public | true                  |
+      | public | true               |
     Then I expect the status code 200
-    And I validate all setting projects
-
-
