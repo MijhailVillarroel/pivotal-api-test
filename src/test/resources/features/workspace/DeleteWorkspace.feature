@@ -11,6 +11,6 @@ Feature: Delete Works pace
     And I expect the status code 200
     And stored as Workspace1
 
-  Scenario: delete a workspace without projects
-    When I send a DELETE request /my/workspaces/[Workspace1.id] endpoint
-    Then I expect the status code 204
+#  Scenario: delete a workspace without projects
+#    When I send a DELETE request /my/workspaces/[Workspace1.id] endpoint
+#    Then I expect the status code 204

@@ -3,7 +3,7 @@ Feature: Testing for delete project in Pivotal
 
   Background: create a Project
     Given  I send a POST request to /projects
-      | name   | Test Edit Project |
+      | name   | Test Edit Projects |
       | public | true                   |
     And I expect the status code 200
     Then stored as Project1
@@ -18,3 +18,8 @@ Feature: Testing for delete project in Pivotal
   Scenario: Delete projects
     When I send a DELETE request /projects/[Project1.id]
     Then I expect the status code 204
+
+  @deleteAllProject
+  Scenario: Get All Projects
+    Given I send a GET request to /projects endpoint
+    Then I expect the status code 200

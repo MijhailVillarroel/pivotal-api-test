@@ -50,7 +50,7 @@ public class ValidateProjects {
 
     public static Map<ProjectSteps, Boolean> getAssertionMap(Map<ProjectSteps, Object> values) {
         Map<ProjectSteps, Boolean> strategyMap = new HashMap<>();
-        strategyMap.put(ID, validateSizeString(String.valueOf(values.get(ID.nameLowerCase()).toString()), 50));
+        strategyMap.put(ID, isAInt(String.valueOf(values.get(ID.nameLowerCase()).toString())));
         strategyMap.put(KIND, validateKind(values.get(KIND.nameLowerCase()).toString(), "project"));
         strategyMap.put(NAME, validateSizeString(values.get(NAME.nameLowerCase()).toString(), 50));
         strategyMap.put(VERSION, isAInt(values.get(VERSION.nameLowerCase()).toString()));
@@ -71,7 +71,7 @@ public class ValidateProjects {
         strategyMap.put(START_TIME, validateStringDate(values.get(START_TIME.nameLowerCase()).toString()));
         strategyMap.put(CREATED_AT, validateStringDate(values.get(CREATED_AT.nameLowerCase()).toString()));
         strategyMap.put(UPDATED_AT, validateStringDate(values.get(UPDATED_AT.nameLowerCase()).toString()));
-        strategyMap.put(ACCOUNT_ID, validateId(values.get(ACCOUNT_ID.nameLowerCase()).toString()));
+        strategyMap.put(ACCOUNT_ID, isAInt(values.get(ACCOUNT_ID.nameLowerCase()).toString()));
         strategyMap.put(CURRENT_ITERATION_NUMBER, isAInt(values.get(CURRENT_ITERATION_NUMBER.nameLowerCase()).toString()));
         strategyMap.put(ENABLE_FOLLOWING, isABoolean(values.get(ENABLE_FOLLOWING.nameLowerCase()).toString()));
         return strategyMap;

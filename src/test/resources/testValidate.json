@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Product set",
+  "type": "array",
+  "items": {
+    "title": "Product",
+    "type": "array",
+    "properties": {
+      "id": {
+        "description": "The unique identifier for a product",
+        "type": "number"
+      },
+      "name": {
+        "type": "string"
+      },
+      "kind": {
+        "type": "string"
+      },
+      "version": {
+        "type": "number",
+        "minimum": 0,
+        "exclusiveMinimum": true
+      },
+      "iteration_length": {
+        "type": "number",
+        "minimum": 0,
+        "exclusiveMinimum": true
+      },
+      "week_start_day": {
+        "type": "string"
+      },
+      "point_scale": {
+        "type": "string"
+      },
+      "point_scale_is_custom": {
+        "type": "boolean"
+      },
+      "bugs_and_chores_are_estimatable": {
+        "type": "boolean"
+      },
+      "automatic_planning": {
+        "type": "boolean"
+      },
+      "enable_tasks": {
+        "type": "boolean"
+      },
+      "time_zone": {
+        "type": "object"
+      },
+      "velocity_averaged_over": {
+        "type": "number",
+        "minimum": 0,
+        "exclusiveMinimum": true
+      },
+      "number_of_done_iterations_to_show": {
+        "type": "number",
+        "minimum": 0,
+        "exclusiveMinimum": true
+      },
+      "has_google_domain": {
+        "type": "boolean"
+      },
+      "enable_incoming_emails": {
+        "type": "boolean"
+      },
+      "initial_velocity": {
+        "type": "number",
+        "minimum": 0,
+        "exclusiveMinimum": true
+      },
+      "public": {
+        "type": "boolean"
+      },
+      "atom_enabled": {
+        "type": "boolean"
+      },
+      "project_type": {
+        "type": "string"
+      },
+      "start_time": {
+        "type": "string"
+      },
+      "created_at": {
+        "type": "string"
+      },
+      "updated_at": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "number",
+        "minimum": 0,
+        "exclusiveMinimum": true
+      },
+      "current_iteration_number": {
+        "type": "number",
+        "minimum": 0,
+        "exclusiveMinimum": true
+      },
+      "enable_following": {
+        "type": "boolean"
+      }
+    }
+
+  }
+}

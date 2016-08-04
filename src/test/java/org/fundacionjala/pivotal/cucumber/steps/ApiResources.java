@@ -40,7 +40,9 @@ public class ApiResources {
 
     @When("^I send a DELETE request (.*?)$")
     public void iSendADELETERequest(String endPoint) {
+        String a = mapEndpoint(endPoint);
         response = deleteRequest(mapEndpoint(endPoint));
+        System.out.println(response.prettyPrint());
     }
 
     @And("^stored as (.*)")

@@ -27,12 +27,13 @@ public final class CommonValidations {
     }
 
     public static boolean isABoolean(String value) {
-        return Boolean.parseBoolean(value);
+        return value.equalsIgnoreCase("true")||value.equalsIgnoreCase("false") ? true : false;
     }
 
     public static boolean isAInt(String value) {
         try {
-            Integer.parseInt(value);
+           Double a = Double.parseDouble(value);
+            Integer.parseInt(a.intValue()+"");
             return true;
         } catch (NumberFormatException e) {
             return false;
@@ -41,5 +42,11 @@ public final class CommonValidations {
 
     public static boolean validateKind(String valueSearch, String value) {
         return value.equalsIgnoreCase(valueSearch);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Boolean.parseBoolean ("false"));
+        System.out.println(Boolean.parseBoolean("true"));
+        System.out.println(Boolean.getBoolean("any"));
     }
 }
